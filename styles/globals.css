@@ -1,0 +1,12 @@
+:root {
+  --color-bg-primary: rgb(15, 10, 20);
+
+  --color-text-primary: rgb(245, 235, 255);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+}
