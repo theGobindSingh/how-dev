@@ -1,5 +1,5 @@
 // home page
 export const homeLandingTexts: [string, string] = [
-  "Degital design &",
+  "Digital design &",
   "Branding studio",
 ];

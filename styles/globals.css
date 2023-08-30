@@ -10,3 +10,12 @@
   color: var(--color-text-primary);
   font-family: var(--font-primary);
 }
+body {
+  overflow-x: hidden;
+  scroll-snap-align: unset;
+  scroll-snap-stop: unset;
+}
+
+* {
+  scroll-behavior: smooth;
+}
