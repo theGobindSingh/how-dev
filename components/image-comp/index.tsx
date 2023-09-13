@@ -5,13 +5,13 @@ import { imgContainerWrapper } from "./styles";
 import type { ImageContainerProps } from "./types";
 
 export default function ImageComp(props: ImageContainerProps) {
-  const { containerClassName, ...allOtherProps } = props;
+  const { containerClassName, containerCss, ...allOtherProps } = props;
   return (
     <div
       className={
         "img-container" + (containerClassName ? " " + containerClassName : "")
       }
-      css={imgContainerWrapper}
+      css={[imgContainerWrapper, containerCss]}
     >
       <Image {...allOtherProps} fill sizes="100%" />
     </div>

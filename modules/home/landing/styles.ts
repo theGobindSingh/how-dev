@@ -65,3 +65,11 @@ export const upperChar = css`
 export const lowerChar = css`
   ${commonChar}
 `;
+
+const commonSpanWrapper = css``;
+export const upperSpanWrapper = css`
+  ${commonSpanWrapper}
+`;
+export const lowerSpanWrapper = css`
+  ${commonSpanWrapper}
+`;

@@ -6,7 +6,9 @@ import {
   landingHeading,
   landingWrapper,
   lowerChar,
+  lowerSpanWrapper,
   upperChar,
+  upperSpanWrapper,
 } from "./styles";
 
 interface HomeLandingProps {
@@ -47,8 +49,12 @@ function HL(props: HomeLandingProps, ref: Ref<HTMLDivElement>) {
 
   const commonJsx = (
     <>
-      <span className="main-span-wrapper">{firstSplit.map(mapper)}</span>
-      <span className="main-span-wrapper">{secondSplit.map(mapper)}</span>
+      <span className="main-span-wrapper" css={upperSpanWrapper}>
+        {firstSplit.map(mapper)}
+      </span>
+      <span className="main-span-wrapper" css={lowerSpanWrapper}>
+        {secondSplit.map(mapper)}
+      </span>
     </>
   );
 

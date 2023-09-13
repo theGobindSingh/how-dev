@@ -4,34 +4,39 @@ export default function useMasterLandingPage() {
   const landingRefTop = useRef<HTMLDivElement>(null);
   const landingRefBottom = useRef<HTMLDivElement>(null);
 
-  const landingTopCallback = useCallback((scrollPos: number) => {
+  const getLandingSpans = useCallback((elem: HTMLDivElement) => {
     const spans: HTMLSpanElement[] = Array.from(
-      landingRefTop.current?.querySelectorAll(
-        ".landing-heading > .main-span-wrapper"
-      ) ?? []
+      elem?.querySelectorAll(".landing-heading > .main-span-wrapper") ?? []
     );
-    const spanOne = spans[0];
-    const spanTwo = spans[1];
-    if (spanOne && spanTwo) {
-      spanOne.style.transform = `translateX(${scrollPos * 0.5}px)`;
-      spanTwo.style.transform = `translateX(-${scrollPos * 0.5}px)`;
-    }
+    return spans as [HTMLSpanElement, HTMLSpanElement];
   }, []);
 
-  const landingBottomCallback = useCallback((scrollPos: number) => {
-    const spans: HTMLSpanElement[] = Array.from(
-      landingRefBottom.current?.querySelectorAll(
-        ".landing-heading > .main-span-wrapper"
-      ) ?? []
-    );
-    const spanOne = spans[0];
-    const spanTwo = spans[1];
-    const percentMove = (document.body.scrollHeight / scrollPos - 1.25) * 100;
-    if (spanOne && spanTwo) {
-      spanOne.style.transform = `translateX(-${percentMove}%)`;
-      spanTwo.style.transform = `translateX(${percentMove}%)`;
-    }
-  }, []);
+  const landingTopCallback = useCallback(
+    (scrollPos: number) => {
+      const [spanOne, spanTwo] = getLandingSpans(
+        landingRefTop.current as HTMLDivElement
+      );
+      if (spanOne && spanTwo) {
+        spanOne.style.transform = `translateX(${scrollPos * 0.5}px)`;
+        spanTwo.style.transform = `translateX(-${scrollPos * 0.5}px)`;
+      }
+    },
+    [getLandingSpans]
+  );
+
+  const landingBottomCallback = useCallback(
+    (scrollPos: number) => {
+      const [spanOne, spanTwo] = getLandingSpans(
+        landingRefBottom.current as HTMLDivElement
+      );
+      const percentMove = (document.body.scrollHeight / scrollPos - 1.25) * 100;
+      if (spanOne && spanTwo) {
+        spanOne.style.transform = `translateX(-${percentMove}%)`;
+        spanTwo.style.transform = `translateX(${percentMove}%)`;
+      }
+    },
+    [getLandingSpans]
+  );
 
   const scrollCallback = useCallback<EventListener>(() => {
     const scrollPos = window.scrollY;
@@ -42,15 +47,15 @@ export default function useMasterLandingPage() {
   const wheelCallback = useCallback((e: WheelEvent) => {
     const bodyHeight = document.body.scrollHeight;
     const delta = e.deltaY;
-    const currentScrollPos = window.scrollY;
-    if (currentScrollPos === 0 && e.deltaY < 0) {
+    const currentScrollPos = Math.round(window.scrollY);
+    if (currentScrollPos === 0 && delta < 0) {
       window.scrollTo({ top: bodyHeight, behavior: "instant" });
-      window.scrollTo({ top: bodyHeight + delta, behavior: "smooth" });
+      // window.scrollTo({ top: bodyHeight + delta, behavior: "smooth" });
       return;
     }
-    if (currentScrollPos === bodyHeight - window.innerHeight && e.deltaY > 0) {
+    if (currentScrollPos === bodyHeight - window.innerHeight && delta > 0) {
       window.scrollTo({ top: 0, behavior: "instant" });
-      window.scrollTo({ top: Math.abs(delta), behavior: "smooth" });
+      // window.scrollTo({ top: Math.abs(delta), behavior: "smooth" });
       return;
     }
   }, []);
