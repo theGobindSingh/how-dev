@@ -30,7 +30,7 @@
       "@modules/*": ["./modules/*"],
       "@pages/*": ["./pages/*"],
       "@hooks/*": ["./hooks/*"],
-      "@common-data": ["./common-data"]
+      "@common-data": ["./common/common-data"]
     },
     "noPropertyAccessFromIndexSignature": false,
     "ignoreDeprecations": "5.0",

@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef } from "react";
 export default function useMasterLandingPage() {
   const landingRefTop = useRef<HTMLDivElement>(null);
   const landingRefBottom = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLDivElement>(null);
 
   const getLandingSpans = useCallback((elem: HTMLDivElement) => {
     const spans: HTMLSpanElement[] = Array.from(
@@ -29,7 +30,11 @@ export default function useMasterLandingPage() {
       const [spanOne, spanTwo] = getLandingSpans(
         landingRefBottom.current as HTMLDivElement
       );
-      const percentMove = (document.body.scrollHeight / scrollPos - 1.25) * 100;
+      const winHeight = window.innerHeight;
+      const docHeight = document.body.offsetHeight;
+      const scrollTop = scrollPos;
+      const scrollPercent = scrollTop / (docHeight - winHeight);
+      const percentMove = 100 - scrollPercent * 100;
       if (spanOne && spanTwo) {
         spanOne.style.transform = `translateX(-${percentMove}%)`;
         spanTwo.style.transform = `translateX(${percentMove}%)`;
@@ -69,5 +74,13 @@ export default function useMasterLandingPage() {
     };
   }, [scrollCallback, wheelCallback]);
 
-  return [landingRefTop, landingRefBottom];
+  return {
+    heroText: {
+      landingRefTop,
+      landingRefBottom,
+    },
+    aboutSection: {
+      aboutRef,
+    },
+  };
 }

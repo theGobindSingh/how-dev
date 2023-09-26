@@ -1,6 +1,6 @@
 import { type Ref, forwardRef, useCallback, useMemo } from "react";
-import { homeLandingTexts } from "@/common/common-data";
 import getid from "@/common/getid";
+import { homeLandingTexts } from "@common-data";
 import {
   charContainer,
   landingHeading,
@@ -59,7 +59,7 @@ function HL(props: HomeLandingProps, ref: Ref<HTMLDivElement>) {
   );
 
   const topJsx = (
-    <main css={landingWrapper} ref={ref}>
+    <main css={landingWrapper} ref={atBottom ? undefined : ref}>
       <h1
         css={landingHeading}
         title={homeLandingTexts.join(" ")}
@@ -71,7 +71,7 @@ function HL(props: HomeLandingProps, ref: Ref<HTMLDivElement>) {
     </main>
   );
   const bottomJsx = (
-    <div css={landingWrapper} ref={ref}>
+    <div css={landingWrapper} ref={atBottom ? ref : undefined}>
       <span
         css={landingHeading}
         title={homeLandingTexts.join(" ")}
