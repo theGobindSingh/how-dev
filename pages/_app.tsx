@@ -2,7 +2,6 @@ import type { AppProps } from "next/app";
 import { Poppins, Nova_Mono as NovaMono } from "next/font/google";
 import "../styles/globals.css";
 import Head from "next/head";
-import Header from "@/modules/header";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -33,7 +32,6 @@ export default function App({ Component, pageProps }: AppProps) {
           `}
         </style>
       </Head>
-      <Header />
       <Component {...pageProps} />
     </>
   );
