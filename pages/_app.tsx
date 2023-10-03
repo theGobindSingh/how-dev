@@ -1,22 +1,25 @@
 import type { AppProps } from "next/app";
-import { Poppins, Nova_Mono as NovaMono } from "next/font/google";
+// eslint-disable-next-line camelcase
+import {
+  Press_Start_2P as PressStart2P,
+  Syne_Mono as SyneMono,
+} from "next/font/google";
 import "../styles/globals.css";
 import Head from "next/head";
 
-const poppins = Poppins({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
+const headFont = PressStart2P({
   display: "swap",
-  fallback: ["sans-serif"],
+  weight: "400",
+  style: "normal",
+  fallback: ["cursive"],
+  subsets: ["latin", "latin-ext"],
 });
-
-const novaMono = NovaMono({
-  weight: ["400"],
-  style: ["normal"],
-  subsets: ["latin"],
+const bodyFont = SyneMono({
   display: "swap",
+  weight: ["400"],
+  style: "normal",
   fallback: ["monospace"],
+  subsets: ["latin", "latin-ext"],
 });
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -26,8 +29,8 @@ export default function App({ Component, pageProps }: AppProps) {
         <style id="fonts" global={"true" as unknown as boolean}>
           {`
             :root {
-              --font-primary: ${poppins.style.fontFamily};
-              --font-mono: ${novaMono.style.fontFamily};
+              --font-header: ${headFont.style.fontFamily};
+              --font-mono: ${bodyFont.style.fontFamily};
             }
           `}
         </style>

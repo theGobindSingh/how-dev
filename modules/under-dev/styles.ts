@@ -1,7 +1,6 @@
 import { css } from "@emotion/react";
 export const home = css`
   --bor-rad: 15px;
-  --font-header: "Press Start 2P", "cursive";
   --font-color: rgb(211, 228, 252);
   --border: rgb(82, 118, 173);
   --bg-color: var(--color-bg-primary);
@@ -25,7 +24,7 @@ export const home = css`
       justify-content: center;
       align-items: center;
       color: var(--font-color);
-      font-size: 2.25rem;
+      font-size: 1.75rem;
       border-radius: var(--bor-rad);
       text-align: center;
       span {
@@ -71,15 +70,15 @@ export const home = css`
         width: fit-content;
         font-family: var(--font-header);
         margin: 5px 0;
-        font-size: 5rem;
+        font-size: 4rem;
         user-select: none;
-        &:nth-child(1) {
+        &:nth-of-type(1) {
           animation: span-anim 3s ease-in-out 0s infinite normal forwards;
         }
-        &:nth-child(2) {
+        &:nth-of-type(2) {
           animation: span-anim 3s ease-in-out 0.25s infinite normal forwards;
         }
-        &:nth-child(3) {
+        &:nth-of-type(3) {
           animation: span-anim 3s ease-in-out 0.5s infinite normal forwards;
         }
       }
@@ -105,7 +104,7 @@ export const home = css`
       border-radius: var(--bor-rad);
       color: var(--font-color);
       font-family: var(--font-header);
-      font-size: 3rem;
+      font-size: 2.5rem;
       display: flex;
       align-items: center;
       justify-content: center;

@@ -1,24 +1,9 @@
-import { useEffect } from "react";
 import Link from "next/link";
 import { BsInstagram, BsWhatsapp } from "react-icons/bs";
 import { ConstructionLottie } from "@/components/construction-lottie";
 import { home } from "./styles";
 
 export default function UnderDev() {
-  useEffect(() => {
-    const header = document.querySelector("#__next > header") as HTMLDivElement;
-    if (header?.style) {
-      header.style.display = "none";
-    }
-    return () => {
-      const header = document.querySelector(
-        "#__next > header"
-      ) as HTMLDivElement;
-      if (header?.style) {
-        header.style.display = "flex";
-      }
-    };
-  }, []);
   const number = "+919415507316";
   const message = "Hi, I would like to work with you";
   return (
